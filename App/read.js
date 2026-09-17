@@ -1,0 +1,2 @@
+const {getDb} = require('./app');
+
