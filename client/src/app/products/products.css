@@ -1,0 +1,8 @@
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+th { background: #f5f5f5; }
+.btn-edit { color: #1976d2; text-decoration: none; margin-right: 8px; }
+.btn-delete { padding: 4px 10px; background: #d32f2f; color: white;
+              border: none; cursor: pointer; border-radius: 4px; }
+.btn-delete:hover { background: #b71c1c; }
+.error { color: red; }

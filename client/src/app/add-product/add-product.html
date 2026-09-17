@@ -1,0 +1,27 @@
+<h2>Add Product</h2>
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="field">
+    <label>ID</label>
+    <input type="number" name="id" [(ngModel)]="product.id" required>
+  </div>
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="product.name" maxlength="50" required>
+  </div>
+  <div class="field">
+    <label>Description</label>
+    <textarea name="description" [(ngModel)]="product.description" maxlength="255"></textarea>
+  </div>
+  <div class="field">
+    <label>Price</label>
+    <input type="number" name="price" [(ngModel)]="product.price" step="0.01" required>
+  </div>
+  <div class="field">
+    <label>Units</label>
+    <input type="number" name="units" [(ngModel)]="product.units" required>
+  </div>
+  <button type="submit" [disabled]="!f.valid || submitting">Add Product</button>
+  @if (message) {
+    <p [class.error]="isError">{{ message }}</p>
+  }
+</form>

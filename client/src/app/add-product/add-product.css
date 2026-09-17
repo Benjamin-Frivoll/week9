@@ -1,0 +1,10 @@
+form { max-width: 500px; }
+.field { margin-bottom: 12px; }
+label { display: block; margin-bottom: 4px; font-weight: bold; }
+input, textarea { width: 100%; padding: 8px; box-sizing: border-box;
+                  border: 1px solid #ccc; border-radius: 4px; }
+textarea { min-height: 60px; }
+button { padding: 10px 20px; background: #1976d2; color: white;
+         border: none; cursor: pointer; border-radius: 4px; }
+button:disabled { background: #999; cursor: not-allowed; }
+.error { color: red; }

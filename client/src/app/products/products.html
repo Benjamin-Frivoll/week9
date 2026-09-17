@@ -1,0 +1,39 @@
+<h2>Products</h2>
+
+@if (loading) {
+  <p>Loading...</p>
+}
+
+@if (error) {
+  <p class="error">{{ error }}</p>
+}
+
+@if (!loading && products.length > 0) {
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Description</th>
+        <th>Price</th><th>Units</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of products; track p._id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.description }}</td>
+          <td>{{ p.price | currency }}</td>
+          <td>{{ p.units }}</td>
+          <td>
+            <a [routerLink]="['/update', p._id]" class="btn-edit">Edit</a>
+            <button (click)="onDelete(p._id!)" class="btn-delete">Delete</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
+@if (!loading && products.length === 0) {
+  <p>No products yet. <a routerLink="/add">Add one!</a></p>
+}

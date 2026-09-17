@@ -1,4 +1,4 @@
-const {getDb} = require('./app');
+const { getDb } = require('./app');
 
 async function readProducts() {
     const { client, db } = await getDb();
