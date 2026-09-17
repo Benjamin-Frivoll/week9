@@ -7,10 +7,14 @@ let dbInstance = null;
 
 async function getDb() {
   if (dbInstance) return dbInstance;
+
   const client = new MongoClient(url);
+
   await client.connect();
+
   dbInstance = client.db(dbName);
   console.log(`Connected to MongoDB database "${dbName}"`);
+  
   return dbInstance;
 }
 
