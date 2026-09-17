@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../product.service';
@@ -16,18 +16,31 @@ export class Products implements OnInit {
   loading = true;
   error = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private cdr: ChangeDetectorRef) {
+    console.log('[Products] constructor');
+  }
 
-  ngOnInit() { this.loadProducts(); }
+  ngOnInit() {
+    console.log('[Products] ngOnInit');
+    this.loadProducts();
+  }
 
   loadProducts() {
+    console.log('[Products] loadProducts start');
     this.loading = true;
     this.productService.getProducts().subscribe({
-      next: (data) => { this.products = data; this.loading = false; },
+      next: (data) => {
+        console.log('[Products] got data:', data);
+        this.products = data;
+        this.loading = false;
+        this.cdr.detectChanges();
+        console.log('[Products] state updated, loading=', this.loading, 'products.length=', this.products.length);
+      },
       error: (err) => {
+        console.log('[Products] error:', err);
         this.error = 'Failed to load products. Is the server running?';
         this.loading = false;
-        console.error(err);
+        this.cdr.detectChanges();
       }
     });
   }
